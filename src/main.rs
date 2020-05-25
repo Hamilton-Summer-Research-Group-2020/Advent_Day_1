@@ -12,17 +12,13 @@ use std::io; // to read file name from input
 // Helper function that returns the amount of fuel required for a module of mass mod_mass.
 // Algorithm: Take its mass (a u32), divide by three, round down, and subtract 2
 fn fuel_required(mod_mass: u32) -> u32 {
-    // floor (num, dec) takes a number, and number of decimal places to round down to
-    // round::floor(mod_mass / 3, 0) - 2
+    // Turns the parameter to f64, divides by 3 and rounds down.
+    // Then, we subtract 2 and return that value
 
     let first_step = (mod_mass / 3) as f64;
     let second_step = first_step.floor();
 
     (second_step as u32) - 2
-
-    // the floor of first_step is first_step - (first_step % 1)
-    //  e.g. floor (5.7) = 5.7 - (5.7 % 1) = 5.7 - .7 = 5
-    // first_step - (first_step % 1) - 2
 }
 
 // The Main method
