@@ -6,7 +6,6 @@ Desc: Calculate the required amount of fuel for the given set of modules and the
 */
 
 // we were unable to import math
-// use math::round; // for floor
 use std::fs; // to read file
 use std::io; // to read file name from input
 
@@ -16,11 +15,14 @@ fn fuel_required(mod_mass: u32) -> u32 {
     // floor (num, dec) takes a number, and number of decimal places to round down to
     // round::floor(mod_mass / 3, 0) - 2
 
-    let first_step = mod_mass / 3;
+    let first_step = (mod_mass / 3) as f64;
+    let second_step = first_step.floor();
+
+    (second_step as u32) - 2
 
     // the floor of first_step is first_step - (first_step % 1)
     //  e.g. floor (5.7) = 5.7 - (5.7 % 1) = 5.7 - .7 = 5
-    first_step - (first_step % 1) - 2
+    // first_step - (first_step % 1) - 2
 }
 
 // The Main method
